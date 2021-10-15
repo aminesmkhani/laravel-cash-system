@@ -5,7 +5,8 @@
         <div class="container px-5 py-24 mx-auto">
             <div class=" mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg">
                 <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none">
-                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="#6da3fb">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)"
+                          fill="#6da3fb">
                     </rect>
                     <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="#6da3fb">
                     </rect>
@@ -23,7 +24,8 @@
                         <span class="block font-semibold text-xl">
                             گلدان
                         </span>
-                        <span class="bg-white rounded-full text-blue-500  font-bold px-3 py-2 leading-none flex items-center">
+                        <span
+                            class="bg-white rounded-full text-blue-500  font-bold px-3 py-2 leading-none flex items-center">
                            ۴۵۰۰۰ تومان
                         </span>
                     </div>
