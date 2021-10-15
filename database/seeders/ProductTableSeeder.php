@@ -5,15 +5,15 @@ namespace Database\Seeders;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class ProductTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(ProductTableSeeder::class);
+        Product::factory()->count(10)->create();
     }
 }
