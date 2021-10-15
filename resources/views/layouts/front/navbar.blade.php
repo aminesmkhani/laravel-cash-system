@@ -16,7 +16,7 @@
         <nav class="mt-6">
             <div>
                 <a class="w-full font-thin uppercase text-blue-500 flex items-center p-4 my-2 transition-colors duration-200 justify-start bg-gradient-to-l from-white to-blue-100 border-l-4 border-blue-500 dark:from-gray-700 dark:to-gray-800 border-l-4 border-blue-500"
-                   href="./index.html">
+                   href="{{asset('/')}}">
                             <span class="text-left">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@
                                 </svg>
                             </span>
                     <span class="mx-4  font-normal text-lg">
-                                داشبورد
+                                صفحه اصلی
                             </span>
                 </a>
 
@@ -42,20 +42,6 @@
                             </span>
                     <span class="mx-4 text-sm font-normal">
                                 کاربران
-                            </span>
-                </a>
-
-                <a class="w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start hover:text-blue-500"
-                   href="./form.html">
-                            <span class="text-left">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                     fill="currentColor">
-                                    <path
-                                        d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                                </svg>
-                            </span>
-                    <span class="mx-4 text-sm font-normal">
-                                فرم ها
                             </span>
                 </a>
 
