@@ -29,9 +29,9 @@ class SessionStorage implements StorageInterface , Countable
         return session()->get($this->bucket);
     }
 
-    public function exists($index)
+    public function exists($index): bool
     {
-        // TODO: Implement exists() method.
+        return session()->has($this->bucket . '.' . $index);
     }
 
     public function unset($index)
