@@ -12,7 +12,9 @@ class ProductController extends Controller
     {
         $sessionStorage = resolve(StorageInterface::class);
         $sessionStorage->set('product',5);
-        dd($sessionStorage->get('product'));
+        $sessionStorage->set('item',5);
+        $sessionStorage->set('size',2);
+        dd($sessionStorage->all());
         $products = Product::all();
         return view('frontend.products.index',compact('products'));
     }
