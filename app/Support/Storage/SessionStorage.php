@@ -7,6 +7,12 @@ use Countable;
 
 class SessionStorage implements StorageInterface , Countable
 {
+    private $bucket;
+
+    public function __construct($bucket = 'default')
+    {
+        $this->bucket = $bucket;
+    }
 
     public function get($index)
     {
