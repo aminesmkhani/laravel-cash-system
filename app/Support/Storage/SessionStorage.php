@@ -21,7 +21,7 @@ class SessionStorage implements StorageInterface , Countable
 
     public function set($index, $value)
     {
-       return session()->put('items.id', '5');
+       return session()->put($this->bucket . '.' . $index, $value);
     }
 
     public function all()
