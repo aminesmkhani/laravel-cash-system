@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Support\Storage\SessionStorage;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(StoreageInterface::class ,function ($app){
+                return new SessionStorage('cart');
+        });
     }
 }
