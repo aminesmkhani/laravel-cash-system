@@ -14,7 +14,8 @@ class ProductController extends Controller
         $sessionStorage->set('product',5);
         $sessionStorage->set('item',5);
         $sessionStorage->set('size',2);
-        dd($sessionStorage->exists('size'));
+        ($sessionStorage->unset('size'));
+        dd($sessionStorage->all());
         $products = Product::all();
         return view('frontend.products.index',compact('products'));
     }

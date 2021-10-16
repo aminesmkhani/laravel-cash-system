@@ -36,17 +36,17 @@ class SessionStorage implements StorageInterface , Countable
 
     public function unset($index)
     {
-        // TODO: Implement unset() method.
+        return session()->forget($this->bucket . '.' . $index);
     }
 
     public function clear()
     {
-        // TODO: Implement clear() method.
+        return session()->forget($this->bucket);
     }
 
-    public function count()
+    public function count(): int
     {
-        // TODO: Implement count() method.
+        return count($this->all());
     }
 
 }
