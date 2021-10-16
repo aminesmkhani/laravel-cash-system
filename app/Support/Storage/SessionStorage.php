@@ -16,7 +16,7 @@ class SessionStorage implements StorageInterface , Countable
 
     public function get($index)
     {
-        // TODO: Implement get() method.
+        return session()->get($this->bucket . '.' . $index);
     }
 
     public function set($index, $value)

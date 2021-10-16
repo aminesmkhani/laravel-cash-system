@@ -11,8 +11,8 @@ class ProductController extends Controller
     public function index()
     {
         $sessionStorage = resolve(StorageInterface::class);
-        $sessionStorage->set('item',5);
-        dd(session()->all());
+        $sessionStorage->set('product',5);
+        dd($sessionStorage->get('product'));
         $products = Product::all();
         return view('frontend.products.index',compact('products'));
     }
