@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ProductController;
+use App\Support\Storage\Contracts\StorageInterface;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,11 @@ Route::get('/', function () {
 
 
 Route::get('products',[ProductController::class, 'index'])->name('products.index');
+Route::get('basket/add/{product}',[BasketController::class, 'add'])->name('basket.add');
+
+
+
+
+Route::get('basket/clear', function (){
+   resolve(StorageInterface::class)->clear();
+});
