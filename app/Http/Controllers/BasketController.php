@@ -18,6 +18,7 @@ class BasketController extends Controller
     public function add(Product $product)
     {
         $this->basket->add($product,1);
-        dump(session()->all());
+
+        return back()->with('success', 'محصول با موفقیت به شبد خرید اضافه شد');
     }
 }
