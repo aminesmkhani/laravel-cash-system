@@ -18,8 +18,25 @@ class Basket
 
     public function add(Product $product, int $quantity)
     {
+
+        if ($this->has($product)){
+            $quantity = $this->get($product)['quantity'] + $quantity;
+        }
+
         $this->storage->set($product->id, [
            'quantity' => $quantity
         ]);
+    }
+
+
+    public function get(Product $product)
+    {
+        return $this->storage->get($product->id);
+    }
+
+
+    public function has(Product $product)
+    {
+        return $this->storage->exists($product->id);
     }
 }
