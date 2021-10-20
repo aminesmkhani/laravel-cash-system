@@ -23,8 +23,19 @@ class Basket
             $quantity = $this->get($product)['quantity'] + $quantity;
         }
 
+
+    }
+
+
+    public function update(Product $product, int $quantity)
+    {
+
+        if (!$product->hasStock($quantity)){
+
+        }
+
         $this->storage->set($product->id, [
-           'quantity' => $quantity
+            'quantity' => $quantity
         ]);
     }
 
