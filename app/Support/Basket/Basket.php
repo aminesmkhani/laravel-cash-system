@@ -2,6 +2,7 @@
 
 namespace App\Support\Basket;
 
+use App\Exceptions\QuantityExceededException;
 use App\Models\Product;
 use App\Support\Storage\Contracts\StorageInterface;
 
@@ -23,6 +24,8 @@ class Basket
             $quantity = $this->get($product)['quantity'] + $quantity;
         }
 
+        $this->update($product, $quantity);
+
 
     }
 
@@ -31,7 +34,7 @@ class Basket
     {
 
         if (!$product->hasStock($quantity)){
-
+            throw new QuantityExceededException();
         }
 
         $this->storage->set($product->id, [
