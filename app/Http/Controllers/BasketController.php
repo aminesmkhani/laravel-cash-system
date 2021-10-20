@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\QuantityExceededException;
 use App\Models\Product;
 use App\Support\Basket\Basket;
 use Illuminate\Http\Request;
@@ -17,7 +18,12 @@ class BasketController extends Controller
 
     public function add(Product $product)
     {
-        $this->basket->add($product,1);
-        return back()->with('success', 'محصول با موفقیت به شبد خرید اضافه شد');
+        try {
+            $this->basket->add($product,1);
+
+            return back()->with('success', 'محصول با موفقیت به شبد خرید اضافه شد');
+        }catch (QuantityExceededException $e){
+            return back()->with('error', 'محصول مورد نظر به تعدادی که شما درخواست داده اید موجود نیست');
+        }
     }
 }
