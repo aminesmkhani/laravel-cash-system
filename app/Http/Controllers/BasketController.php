@@ -21,7 +21,7 @@ class BasketController extends Controller
         try {
             $this->basket->add($product,1);
 
-            return back()->with('success', 'محصول با موفقیت به شبد خرید اضافه شد');
+            return back()->with('success', 'محصول با موفقیت به سبد خرید اضافه شد');
         }catch (QuantityExceededException $e){
             return back()->with('error', 'محصول مورد نظر به تعدادی که شما درخواست داده اید موجود نیست');
         }
