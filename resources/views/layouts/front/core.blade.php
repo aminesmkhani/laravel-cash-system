@@ -19,9 +19,8 @@
             <!-- Header -->
             @include('layouts.front.header')
             <!-- Header -->
-
+            @include('frontend.action.alert')
             <div class="overflow-auto h-screen pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
-
                 @yield('content')
 
             </div>
@@ -32,6 +31,12 @@
 
     </div>
 </body>
+<script>
+    function closeAlert() {
+        var element = document.getElementById("alert1");
+        element.classList.add("hidden");
+    }
+</script>
 @yield('footer')
 
 </html>
