@@ -5,13 +5,14 @@ namespace App\Support\Basket;
 use App\Exceptions\QuantityExceededException;
 use App\Models\Product;
 use App\Support\Storage\Contracts\StorageInterface;
+use App\Support\Storage\SessionStorage;
 
 class Basket
 {
     private $storage;
 
 
-    public function __construct(StorageInterface $storage)
+    public function __construct(SessionStorage $storage)
     {
         $this->storage = $storage;
     }
@@ -46,6 +47,12 @@ class Basket
     public function get(Product $product)
     {
         return $this->storage->get($product->id);
+    }
+
+
+    public function itemCount()
+    {
+        return $this->storage->count();
     }
 
 
