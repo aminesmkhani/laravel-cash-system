@@ -11,9 +11,6 @@ class ProductController extends Controller
 {
     public function index()
     {
-
-        dump(resolve(Basket::class)->itemCount());
-
         $products = Product::all();
         return view('frontend.products.index',compact('products'));
     }
