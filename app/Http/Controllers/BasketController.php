@@ -30,6 +30,6 @@ class BasketController extends Controller
 
     public function index()
     {
-        return view('s')
+        return view('frontend.basket.basket');
     }
 }
