@@ -26,4 +26,10 @@ class BasketController extends Controller
             return back()->with('error', 'محصول مورد نظر به تعدادی که شما درخواست داده اید موجود نیست');
         }
     }
+
+
+    public function index()
+    {
+        return view('frontend.basket.basket');
+    }
 }
