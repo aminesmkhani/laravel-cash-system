@@ -30,6 +30,7 @@ class BasketController extends Controller
 
     public function index()
     {
-        return view('frontend.basket.basket');
+        $items = $this->basket->all();
+        return view('frontend.basket.basket',compact('items'));
     }
 }

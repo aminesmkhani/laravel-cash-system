@@ -29,5 +29,5 @@ Route::get('basket',[BasketController::class, 'index'])->name('basket.index');
 
 
 Route::get('basket/clear', function (){
-   resolve(StorageInterface::class)->clear();
+   resolve(\App\Support\Storage\SessionStorage::class)->clear();
 });
