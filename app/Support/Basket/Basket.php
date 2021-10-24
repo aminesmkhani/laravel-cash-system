@@ -58,6 +58,16 @@ class Basket
         return $products;
     }
 
+    public function subTotal()
+    {
+        $total = 0;
+        foreach ($this->all() as $item){
+            $total += $item->price * $item->quantity;
+        }
+
+        return $total;
+    }
+
 
     public function itemCount()
     {
