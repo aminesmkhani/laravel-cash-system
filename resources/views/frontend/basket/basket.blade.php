@@ -13,28 +13,30 @@
                                 <a class="text-blue-500" href="{{route('products.index')}}">محصولات</a>
                             </p>
                         @else
-                            <div class="flex justify-between items-center mt-6 pt-6">
-                                <div class="flex items-center">
-                                    <img src="{{asset('aminpanel/src/images/product-1.png')}}" width="60" class="rounded-full ">
-                                    <div class="flex flex-col ml-3">
-                                        <span class="md:text-md">گلدان یک</span>
-                                        <span class="text-xs font-light text-gray-400">#41551</span>
+                            @foreach($items as $item)
+                                <div class="flex justify-between items-center mt-6 pt-6">
+                                    <div class="flex items-center">
+                                        <img src="{{asset('aminpanel/src/images/product-1.png')}}" width="60" class="rounded-full ">
+                                        <div class="flex flex-col ml-3">
+                                            <span class="md:text-md">{{$item->title}}</span>
+                                            <span class="text-xs font-light text-gray-400">#{{$item->id}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <div class="pr-8 flex ">
+                                            <span class="font-semibold">{{$item->quantity}}</span>
+{{--                                            <input type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="1">--}}
+{{--                                            <span class="font-semibold">+</span>--}}
+                                        </div>
+                                        <div class="pr-8 ">
+                                            <span class="text-xs font-medium">{{number_format($item->price)}} تومان</span>
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-close text-xs font-medium"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flex justify-center items-center">
-                                    <div class="pr-8 flex ">
-                                        <span class="font-semibold">-</span>
-                                        <input type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="1">
-                                        <span class="font-semibold">+</span>
-                                    </div>
-                                    <div class="pr-8 ">
-                                        <span class="text-xs font-medium">۱۷ هزار تومان</span>
-                                    </div>
-                                    <div>
-                                        <i class="fa fa-close text-xs font-medium"></i>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                             <div class="flex justify-between items-center mt-6 pt-6 border-t">
                                 <div class="flex items-center">
                                     <i class="fa fa-arrow-left text-sm pr-2"></i>
