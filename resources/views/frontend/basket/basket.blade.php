@@ -37,14 +37,24 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                        @inject('basket','App\Support\Basket\Basket')
                             <div class="flex justify-between items-center mt-6 pt-6 border-t">
                                 <div class="flex items-center">
                                     <i class="fa fa-arrow-left text-sm pr-2"></i>
                                     <span class="text-md font-medium text-blue-500">ثبت و ادامه سفارش</span>
                                 </div>
                                 <div class="flex justify-center items-end">
-                                    <span class="text-gray-400 ml-1">جمع کلی :</span>
-                                    <span class="text-gray-800 "> 17 هزار تومان</span>
+                                    <span class="text-gray-400 ml-1">جمع محصولات :</span>
+                                    <span class="text-gray-800 ">{{number_format($basket->subTotal())}}</span>
+                                </div>
+                                <div class="flex justify-center items-end">
+                                    <span class="text-gray-400 ml-1">هزینه حمل و نقل</span>
+                                    <span class="text-gray-800 ">{{number_format(10000)}}</span>
+                                </div>
+                                <div class="flex justify-center items-end">
+                                    <span class="text-gray-400 ml-1">هزینه نهایی</span>
+                                    <span class="text-gray-800 ">{{number_format($basket->subTotal() + 10000)}}</span>
                                 </div>
                             </div>
                         @endif
