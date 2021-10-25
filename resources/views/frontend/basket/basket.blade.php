@@ -26,11 +26,12 @@
                                         <div class="pr-8 flex ">
                                             <form action="" method="post">
                                                 @csrf
-                                            <select name="quantity" id="quantity">
+                                            <select class="py-2 px-2" name="quantity" id="quantity">
                                                 @for($i = 0; $i <= $item->stock; $i++)
                                                 <option {{$item->quantity == $i ? 'selected' : ''}} value="{{$i}}">{{$i}}</option>
                                                 @endfor
                                             </select>
+                                                <button class="text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded">به روز رسانی</button>
                                             </form>
                                         </div>
                                         <div class="pr-8 ">
