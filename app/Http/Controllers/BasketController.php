@@ -33,4 +33,10 @@ class BasketController extends Controller
         $items = $this->basket->all();
         return view('frontend.basket.basket',compact('items'));
     }
+
+
+    public function update(Request $request, Product $product)
+    {
+        dd($product);
+    }
 }

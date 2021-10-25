@@ -24,7 +24,7 @@
                                     </div>
                                     <div class="flex justify-center items-center">
                                         <div class="pr-8 flex ">
-                                            <form action="{{route('basket.update', $product->id)}}" method="post">
+                                            <form action="{{route('basket.update', $item->id)}}" method="post">
                                                 @csrf
                                             <select class="py-2 px-2" name="quantity" id="quantity">
                                                 @for($i = 0; $i <= $item->stock; $i++)
