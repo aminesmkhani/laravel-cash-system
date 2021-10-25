@@ -24,9 +24,14 @@
                                     </div>
                                     <div class="flex justify-center items-center">
                                         <div class="pr-8 flex ">
-                                            <span class="font-semibold">{{$item->quantity}}</span>
-{{--                                            <input type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="1">--}}
-{{--                                            <span class="font-semibold">+</span>--}}
+                                            <form action="" method="post">
+                                                @csrf
+                                            <select name="quantity" id="quantity">
+                                                @for($i = 0; $i <= $item->stock; $i++)
+                                                <option {{$item->quantity == $i ? 'selected' : ''}} value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                            </form>
                                         </div>
                                         <div class="pr-8 ">
                                             <span class="text-xs font-medium">{{number_format($item->price)}} تومان</span>
