@@ -37,6 +37,7 @@ class BasketController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        dd($product);
+        $this->basket->update($product, $request->quantity);
+        return back();
     }
 }
