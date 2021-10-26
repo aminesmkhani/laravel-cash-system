@@ -48,7 +48,7 @@
                             <div class="flex justify-between items-center mt-6 pt-6 border-t">
                                 <div class="flex items-center">
                                     <i class="fa fa-arrow-left text-sm pr-2"></i>
-                                    <span class="text-md font-medium text-blue-500">ثبت و ادامه سفارش</span>
+                                    <a href="{{route('basket.checkout.form')}}" class="text-md font-medium text-blue-500">ثبت و ادامه سفارش</a>
                                 </div>
                                 <div class="flex justify-center items-end">
                                     <span class="text-gray-400 ml-1">جمع محصولات :</span>

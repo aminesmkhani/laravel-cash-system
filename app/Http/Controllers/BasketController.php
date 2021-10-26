@@ -13,6 +13,7 @@ class BasketController extends Controller
 
     public function __construct(Basket $basket)
     {
+        $this->middleware('auth')->only(['checkoutForm']);
         $this->basket = $basket;
     }
 
@@ -39,5 +40,11 @@ class BasketController extends Controller
     {
         $this->basket->update($product, $request->quantity);
         return back();
+    }
+
+
+    public function checkoutform()
+    {
+        return view('frontend.basket.checkout');
     }
 }
