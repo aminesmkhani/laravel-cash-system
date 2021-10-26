@@ -40,4 +40,10 @@ class BasketController extends Controller
         $this->basket->update($product, $request->quantity);
         return back();
     }
+
+
+    public function checkoutform()
+    {
+        return view('frontend.basket.checkout');
+    }
 }
