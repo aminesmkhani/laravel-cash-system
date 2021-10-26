@@ -24,9 +24,15 @@
                                     </div>
                                     <div class="flex justify-center items-center">
                                         <div class="pr-8 flex ">
-                                            <span class="font-semibold">{{$item->quantity}}</span>
-{{--                                            <input type="text" class="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" value="1">--}}
-{{--                                            <span class="font-semibold">+</span>--}}
+                                            <form action="{{route('basket.update', $item->id)}}" method="post">
+                                                @csrf
+                                            <select class="py-2 px-2" name="quantity" id="quantity">
+                                                @for($i = 0; $i <= $item->stock; $i++)
+                                                <option {{$item->quantity == $i ? 'selected' : ''}} value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                                <button class="text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded">به روز رسانی</button>
+                                            </form>
                                         </div>
                                         <div class="pr-8 ">
                                             <span class="text-xs font-medium">{{number_format($item->price)}} تومان</span>
