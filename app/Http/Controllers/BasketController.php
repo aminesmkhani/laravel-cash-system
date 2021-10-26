@@ -13,6 +13,7 @@ class BasketController extends Controller
 
     public function __construct(Basket $basket)
     {
+        $this->middleware('auth')->only(['checkoutForm']);
         $this->basket = $basket;
     }
 

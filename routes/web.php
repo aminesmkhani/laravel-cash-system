@@ -32,3 +32,7 @@ Route::get('basket/checkout',[BasketController::class, 'checkoutform'])->name('b
 Route::get('basket/clear', function (){
    resolve(\App\Support\Storage\SessionStorage::class)->clear();
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
