@@ -25,7 +25,7 @@ Route::get('products',[ProductController::class, 'index'])->name('products.index
 Route::get('basket/add/{product}',[BasketController::class, 'add'])->name('basket.add');
 Route::get('basket',[BasketController::class, 'index'])->name('basket.index');
 Route::post('basket/update/{product}',[BasketController::class, 'update'])->name('basket.update');
-
+Route::get('basket/checkout',[BasketController::class, 'checkoutform'])->name('basket.checkout.form');
 
 
 
