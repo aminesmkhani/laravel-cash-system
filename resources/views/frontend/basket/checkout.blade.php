@@ -1,6 +1,20 @@
 @extends('layouts.front.core')
 
 @section('content')
+    <div class="flex items-center gap-8">
+        <label class="inline-flex items-center">
+            <input type="radio" name="vehicle" class="h-5 w-5 text-red-600"/>
+            <span class="ml-2 text-gray-700">
+                Car
+            </span>
+        </label>
+        <label class="inline-flex items-center">
+            <input type="radio" name="vehicle" class="h-5 w-5 text-red-600"/>
+            <span class="ml-2 text-gray-700">
+                    Cycle
+                </span>
+        </label>
+    </div>
     <div class="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg md:max-w-5xl">
         <div class="md:flex ">
             <div class="w-full p-4 px-5 py-5">
@@ -26,11 +40,11 @@
                                         <div class="pr-8 flex ">
                                             <form action="{{route('basket.update', $item->id)}}" method="post">
                                                 @csrf
-                                            <select class="py-2 px-2" name="quantity" id="quantity">
-                                                @for($i = 0; $i <= $item->stock; $i++)
-                                                <option {{$item->quantity == $i ? 'selected' : ''}} value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                            </select>
+                                                <select class="py-2 px-2" name="quantity" id="quantity">
+                                                    @for($i = 0; $i <= $item->stock; $i++)
+                                                        <option {{$item->quantity == $i ? 'selected' : ''}} value="{{$i}}">{{$i}}</option>
+                                                    @endfor
+                                                </select>
                                                 <button class="text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded">به روز رسانی</button>
                                             </form>
                                         </div>
@@ -44,7 +58,7 @@
                                 </div>
                             @endforeach
 
-                        @inject('basket','App\Support\Basket\Basket')
+                            @inject('basket','App\Support\Basket\Basket')
                             <div class="flex justify-between items-center mt-6 pt-6 border-t">
                                 <div class="flex items-center">
                                     <i class="fa fa-arrow-left text-sm pr-2"></i>
@@ -61,53 +75,6 @@
                                 <div class="flex justify-center items-end">
                                     <span class="text-gray-400 ml-1">هزینه نهایی</span>
                                     <span class="text-gray-800 ">{{number_format($basket->subTotal() + 10000)}}</span>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="mt-4 max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg md:max-w-5xl">
-        <div class="md:flex ">
-            <div class="w-full p-4 px-5 py-5">
-                <div class="md:grid md:grid-cols-1 gap-2 ">
-                    <div class="col-span-2 p-5">
-                        <h1 class="text-xl font-medium ">روش پرداخت</h1>
-                        @if($items->isEmpty())
-                            <p class="mt-2">
-                                سبد خرید شما خالی میباشد
-                                <a class="text-blue-500" href="{{route('products.index')}}">محصولات</a>
-                            </p>
-                        @else
-                                <div class="flex justify-between items-center mt-6 pt-6">
-                                    <div class="flex justify-center items-center">
-                                            <label class="inline-flex items-center">
-                                                <input type="radio" name="vehicle" class="h-5 w-5 text-red-600"/>
-                                                <span class="mr-2 text-gray-700"> پرداخت آنلاین </span>
-                                            </label>
-                                    </div>
-
-                                    <select class="block w-52 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500" name="animals">
-                                        <option value="saman">
-                                          سامان
-                                        </option>
-                                        <option value="melat">
-                                            ملت
-                                        </option>
-
-                                    </select>
-
-                                </div>
-
-                            <div class="flex justify-between items-center mt-6 pt-6 border-t">
-                                <div class="flex justify-center items-center">
-                                    <label class="inline-flex items-center">
-                                        <input type="radio" name="vehicle" class="h-5 w-5 text-red-600"/>
-                                        <span class="mr-2 text-gray-700"> پرداخت نقدی </span>
-                                    </label>
                                 </div>
                             </div>
                         @endif
