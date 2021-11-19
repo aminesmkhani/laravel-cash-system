@@ -52,6 +52,16 @@ class BasketController extends Controller
 
     public function checkout(Request $request)
     {
+        $this->validateForm($request);
+
         dd($request->all());
+    }
+
+    public function validateForm($request)
+    {
+        $request->validate([
+           'method' => ['required'],
+            'gateway' => ['required_if:method,online']
+        ]);
     }
 }
