@@ -57,7 +57,7 @@
                             <div class="flex justify-between items-center mt-6 pt-6">
                                 <div class="flex justify-center items-center">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" name="vehicle" class="h-5 w-5 text-red-600"/>
+                                        <input type="radio" name="method" id="online" value="online" class="h-5 w-5 text-red-600"/>
                                         <span class="mr-2 text-gray-700">  پرداخت آنلاین </span>
                                     </label>
                                 </div>
@@ -78,15 +78,18 @@
                             <div class="flex justify-between items-center mt-6 pt-6 border-t">
                                 <div class="flex justify-center items-center">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" name="vehicle" class="h-5 w-5 text-red-600"/>
+                                        <input type="radio" id="cash" name="method" value="cash" class="h-5 w-5 text-red-600"/>
                                         <span class="mr-2 text-gray-700"> پرداخت نقدی </span>
                                     </label>
                                 </div>
+                                <p class="text-gray-400">
+                                    در این روش شما میتونید درب منزل خود مبلغ را پرداخت نمایید
+                                </p>
                             </div>
                             <div class="flex justify-between items-center mt-6 pt-6 border-t">
                                 <div class="flex justify-center items-center">
                                     <label class="inline-flex items-center">
-                                        <input type="radio" name="vehicle" class="h-5 w-5 text-red-600"/>
+                                        <input type="radio" name="method" id="cart" value="cart" class="h-5 w-5 text-red-600"/>
                                         <span class="mr-2 text-gray-700"> کارت به کارت </span>
                                     </label>
                                 </div>
