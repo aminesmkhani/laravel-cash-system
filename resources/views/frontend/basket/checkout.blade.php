@@ -1,6 +1,8 @@
 @extends('layouts.front.core')
 
 @section('content')
+    <form action="{{route('basket.checkout')}}" method="POST">
+        @csrf
     <div class="mt-4 max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg md:max-w-5xl">
         <div class="md:flex ">
             <div class="w-full p-4 px-5 py-5">
@@ -114,14 +116,11 @@
                         <div class="flex justify-between items-center mt-6 pt-6 border-t">
                             <div class="flex items-center">
                                 <i class="fa fa-arrow-left text-sm pr-2"></i>
-                                <a href="{{route('basket.checkout.form')}}" class="text-md font-medium text-blue-500">
-
                                     <button
                                         class="text-blue-500 bg-transparent border border-solid border-blue-500 hover:bg-blue-500 hover:text-white active:bg-blue-600 font-bold px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="lin ">
+                                        type="submit">
                                         پرداخت
                                     </button>
-                                </a>
                             </div>
                             <div class="flex justify-center items-end">
                                 <span class="text-gray-400 ml-1">جمع محصولات :</span>
@@ -129,11 +128,11 @@
                             </div>
                             <div class="flex justify-center items-end">
                                 <span class="text-gray-400 ml-1">هزینه حمل و نقل</span>
-                                <span class="text-gray-800 ">{{number_format(10000)}}</span>
+                                <span class="text-gray-800">{{number_format(10000)}}</span>
                             </div>
                             <div class="flex justify-center items-end">
                                 <span class="text-gray-400 ml-1">هزینه نهایی</span>
-                                <span class="text-gray-800 ">{{number_format($basket->subTotal() + 10000)}}</span>
+                                <span class="text-gray-800">{{number_format($basket->subTotal() + 10000)}}</span>
                             </div>
                         </div>
                     </div>
@@ -141,4 +140,5 @@
             </div>
         </div>
     </div>
+    </form>
 @endsection
