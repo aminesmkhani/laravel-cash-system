@@ -46,7 +46,6 @@ class BasketController extends Controller
     public function checkoutform()
     {
         $items = $this->basket->all();
-
         return view('frontend.basket.checkout',compact('items'));
     }
 
