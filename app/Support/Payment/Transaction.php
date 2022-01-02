@@ -30,5 +30,7 @@ class Transaction
             'code'    => bin2hex(str_random(16)),
             'amount'  => $this->basket->subTotal()
         ]);
+
+        return $order;
     }
 }
