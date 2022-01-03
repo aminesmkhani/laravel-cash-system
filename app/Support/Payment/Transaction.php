@@ -31,6 +31,8 @@ class Transaction
             'amount'  => $this->basket->subTotal()
         ]);
 
+        $order->products()->attach($roleId);
+
         return $order;
     }
 }
