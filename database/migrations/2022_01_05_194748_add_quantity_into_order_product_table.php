@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddQuantityIntoOrderProduct extends Migration
+class AddQuantityIntoOrderProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddQuantityIntoOrderProduct extends Migration
     public function up()
     {
         Schema::table('order_product', function (Blueprint $table) {
-            //
+            $table->integer('quantity');
         });
     }
 
