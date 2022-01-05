@@ -5,6 +5,7 @@ namespace App\Support\Payment;
 use App\Models\Order;
 use App\Support\Basket\Basket;
 use Illuminate\Http\Request;
+use function GuzzleHttp\Promise\all;
 
 class Transaction
 {
@@ -30,9 +31,16 @@ class Transaction
             'code'    => bin2hex(str_random(16)),
             'amount'  => $this->basket->subTotal()
         ]);
-
-        $order->products()->attach($roleId);
+        $this->products();
+//        $order->products()->attach();
 
         return $order;
+    }
+
+    private function products()
+    {
+        foreach ($this->basket->all() as $product){
+            $products[$product->id] = ['quantity' => $product->quantity];
+        }
     }
 }
