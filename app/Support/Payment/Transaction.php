@@ -3,6 +3,7 @@
 namespace App\Support\Payment;
 
 use App\Models\Order;
+use App\Models\Payment;
 use App\Support\Basket\Basket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -22,7 +23,7 @@ class Transaction
     public function checkout()
     {
         $order = $this->makeOrder();
-        dd($order);
+        $payment = $this->makePayment($order);
     }
 
     public function makeOrder()
@@ -36,6 +37,15 @@ class Transaction
         $order->products()->attach($this->products());
 
         return $order;
+    }
+
+    public function makePayment($order)
+    {
+        return Payment::create([
+            'order_id' => $order->id,
+            'method'   => $this->request->method(),
+            'amount'   => $order->amount
+        ]);
     }
 
     private function products()
