@@ -84,4 +84,9 @@ class Basket
     {
         return $this->storage->exists($product->id);
     }
+
+    public function clear()
+    {
+        return $this->storage->clear();
+    }
 }

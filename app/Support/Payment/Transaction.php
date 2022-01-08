@@ -3,8 +3,10 @@
 namespace App\Support\Payment;
 
 use App\Models\Order;
+use App\Models\Payment;
 use App\Support\Basket\Basket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use function GuzzleHttp\Promise\all;
 
 class Transaction
@@ -21,20 +23,31 @@ class Transaction
     public function checkout()
     {
         $order = $this->makeOrder();
-        dd($order);
+        $payment = $this->makePayment($order);
+        $this->basket->clear();
+        return $order;
     }
 
     public function makeOrder()
     {
         $order = Order::create([
             'user_id' => auth()->user()->id,
-            'code'    => bin2hex(str_random(16)),
+            'code'    => bin2hex(Str::random(16)),
             'amount'  => $this->basket->subTotal()
         ]);
-        $this->products();
-//        $order->products()->attach();
+
+        $order->products()->attach($this->products());
 
         return $order;
+    }
+
+    public function makePayment($order)
+    {
+        return Payment::create([
+            'order_id' => $order->id,
+            'method'   => $this->request->method(),
+            'amount'   => $order->amount
+        ]);
     }
 
     private function products()
@@ -42,5 +55,7 @@ class Transaction
         foreach ($this->basket->all() as $product){
             $products[$product->id] = ['quantity' => $product->quantity];
         }
+
+        return $products;
     }
 }
