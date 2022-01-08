@@ -24,6 +24,7 @@ class Transaction
     {
         $order = $this->makeOrder();
         $payment = $this->makePayment($order);
+        $this->basket->clear();
     }
 
     public function makeOrder()
