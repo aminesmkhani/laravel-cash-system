@@ -5,7 +5,7 @@ namespace App\Support\Payment\Gateways;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
-class Saman implements GatewayInterface
+class Pasargad implements GatewayInterface
 {
 
     public function pay(Order $order)
@@ -20,6 +20,6 @@ class Saman implements GatewayInterface
 
     public function getName(): string
     {
-        return 'saman';
+        // TODO: Implement getName() method.
     }
 }
