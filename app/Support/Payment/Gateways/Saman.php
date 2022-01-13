@@ -10,12 +10,12 @@ class Saman implements GatewayInterface
 
     public function pay(Order $order)
     {
-        // TODO: Implement pay() method.
+        dd('Saman Pay');
     }
 
     public function verify(Request $request)
     {
-        // TODO: Implement verify() method.
+
     }
 
     public function getName(): string
