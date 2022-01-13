@@ -10,16 +10,16 @@ class Pasargad implements GatewayInterface
 
     public function pay(Order $order)
     {
-        // TODO: Implement pay() method.
+        dd('Pasargad Pay');
     }
 
     public function verify(Request $request)
     {
-        // TODO: Implement verify() method.
+
     }
 
     public function getName(): string
     {
-        // TODO: Implement getName() method.
+        return 'pasargad';
     }
 }
