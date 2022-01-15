@@ -28,9 +28,8 @@ class Transaction
         $order = $this->makeOrder();
         $payment = $this->makePayment($order);
         if ($payment->isOnline()){
-           dd($this->gatewayFactory());
+           $this->gatewayFactory()->pay($order);
         }
-        ddd($payment);
         $this->basket->clear();
         return $order;
     }
