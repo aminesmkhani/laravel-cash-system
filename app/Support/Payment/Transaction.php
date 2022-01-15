@@ -24,7 +24,6 @@ class Transaction
 
     public function checkout()
     {
-
         $order = $this->makeOrder();
         $payment = $this->makePayment($order);
         if ($payment->isOnline()){
@@ -51,9 +50,7 @@ class Transaction
             'code'    => bin2hex(Str::random(16)),
             'amount'  => $this->basket->subTotal()
         ]);
-
         $order->products()->attach($this->products());
-
         return $order;
     }
 
@@ -71,7 +68,6 @@ class Transaction
         foreach ($this->basket->all() as $product){
             $products[$product->id] = ['quantity' => $product->quantity];
         }
-
         return $products;
     }
 }
