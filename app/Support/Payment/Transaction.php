@@ -5,6 +5,8 @@ namespace App\Support\Payment;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Support\Basket\Basket;
+use App\Support\Payment\Gateways\Pasargad;
+use App\Support\Payment\Gateways\Saman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use function GuzzleHttp\Promise\all;
@@ -25,10 +27,20 @@ class Transaction
         $order = $this->makeOrder();
         $payment = $this->makePayment($order);
         if ($payment->isOnline()){
-           dd('online');
+           $this->gatewayFactory()->pay($order);
         }
         $this->basket->clear();
         return $order;
+    }
+
+    private function gatewayFactory()
+    {
+        $gateway = [
+            'saman' => Saman::class,
+            'pasargad'  => Pasargad::class
+        ][$this->request->gateway];
+
+        return resolve($gateway);
     }
 
     public function makeOrder()
@@ -38,9 +50,7 @@ class Transaction
             'code'    => bin2hex(Str::random(16)),
             'amount'  => $this->basket->subTotal()
         ]);
-
         $order->products()->attach($this->products());
-
         return $order;
     }
 
@@ -48,7 +58,7 @@ class Transaction
     {
         return Payment::create([
             'order_id' => $order->id,
-            'method'   => $this->request->method(),
+            'method'   => $this->request->method,
             'amount'   => $order->amount
         ]);
     }
@@ -58,7 +68,6 @@ class Transaction
         foreach ($this->basket->all() as $product){
             $products[$product->id] = ['quantity' => $product->quantity];
         }
-
         return $products;
     }
 }
