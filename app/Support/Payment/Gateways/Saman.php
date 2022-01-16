@@ -22,6 +22,16 @@ class Saman implements GatewayInterface
         dd('Saman Pay');
     }
 
+    private function redirectToBank($order)
+    {
+        echo "<form id='samanpayment' action='https://sep.shaparak.ir/payment.aspx' method='post'>
+            <input type='hidden' name='Amount' value='{$order->amount}' />
+            <input type='hidden' name='ResNum' value='{$order->code}' />
+            <input type='hidden' name='RedirectURL' value='{$this->callback}' />
+            <input type='hidden' name='MID' value='{$this->merchantId}' />
+            </form><script>document.forms['samanpayment'].submit()</script>";
+    }
+
     public function verify(Request $request)
     {
 
