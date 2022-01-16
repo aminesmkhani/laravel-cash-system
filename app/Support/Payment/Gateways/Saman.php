@@ -13,7 +13,8 @@ class Saman implements GatewayInterface
 
     public function __construct()
     {
-        $this->merchantId = ''
+        $this->merchantId = '452585658';
+        $this->callback = route('payment.verify', $this->getName());
     }
 
     public function pay(Order $order)
