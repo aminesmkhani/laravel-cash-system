@@ -27,6 +27,7 @@ Route::get('basket',[BasketController::class, 'index'])->name('basket.index');
 Route::post('basket/update/{product}',[BasketController::class, 'update'])->name('basket.update');
 Route::get('basket/checkout',[BasketController::class, 'checkoutform'])->name('basket.checkout.form');
 Route::post('basket/checkout',[BasketController::class, 'checkout'])->name('basket.checkout');
+Route::post('payment/{gateway}/callback', [PaymentController::class, 'verify'])->name('payment.verify');
 
 
 

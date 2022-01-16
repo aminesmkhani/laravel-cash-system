@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class Saman implements GatewayInterface
 {
 
+    private  $merchantId;
+    private $callback;
+
+    public function __construct()
+    {
+        $this->merchantId = ''
+    }
+
     public function pay(Order $order)
     {
         dd('Saman Pay');
