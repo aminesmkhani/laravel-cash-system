@@ -35,8 +35,12 @@ class Saman implements GatewayInterface
 
     public function verify(Request $request)
     {
-
+        if (!$request->has('State') || $request->input('State') !== "OK"){
+            return self::TRANSACTION_FAILED;
+        }
     }
+
+
 
     public function getName(): string
     {

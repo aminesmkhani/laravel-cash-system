@@ -70,4 +70,11 @@ class Transaction
         }
         return $products;
     }
+
+
+    public function verify()
+    {
+        $result = $this->gatewayFactory()->verify($this->request);
+        dd($result);
+    }
 }
