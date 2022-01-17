@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Support\Storage\Contracts\StorageInterface;
 use Illuminate\Support\Facades\Route;
