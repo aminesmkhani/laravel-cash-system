@@ -18,4 +18,14 @@ class PaymentController extends Controller
     {
        $result = $this->transaction->verify();
     }
+
+    private function sendErrorResponse()
+    {
+        return redirect()->route('home')->with('error','مشکلی در هنگام صبت سفارش به وجود آمده است');
+    }
+    private function sendSuccessResponse()
+    {
+        return redirect()->route('home')->with('success','سفارش شما با موفقیت ایجاد شد');
+    }
+
 }
