@@ -17,6 +17,5 @@ class PaymentController extends Controller
     public function verify(Request $request)
     {
        $result = $this->transaction->verify();
-       dd($result);
     }
 }

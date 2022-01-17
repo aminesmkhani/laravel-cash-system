@@ -5,6 +5,7 @@ namespace App\Support\Payment;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Support\Basket\Basket;
+use App\Support\Payment\Gateways\GatewayInterface;
 use App\Support\Payment\Gateways\Pasargad;
 use App\Support\Payment\Gateways\Saman;
 use Illuminate\Http\Request;
@@ -75,6 +76,6 @@ class Transaction
     public function verify()
     {
         $result = $this->gatewayFactory()->verify($this->request);
-        dd($result);
+        if ($result['status'] === GatewayInterface::TRANSACTION_FAILED) return false;
     }
 }
