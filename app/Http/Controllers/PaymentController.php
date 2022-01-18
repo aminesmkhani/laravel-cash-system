@@ -16,7 +16,9 @@ class PaymentController extends Controller
 
     public function verify(Request $request)
     {
-       $result = $this->transaction->verify();
+       return $this->transaction->verify()
+           ? $this->sendSuccessResponse()
+           : $this->sendErrorResponse();
     }
 
     private function sendErrorResponse()
