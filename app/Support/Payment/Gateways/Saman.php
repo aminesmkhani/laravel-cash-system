@@ -38,6 +38,9 @@ class Saman implements GatewayInterface
         if (!$request->has('State') || $request->input('State') !== "OK"){
             return $this->transactionFailed();
         }
+
+        $soapClient = new \SoapClient('https://acquirer.samanepay.com/payments/referencepayment.asmx?WSDL');
+
     }
 
     private function transactionFailed(){
