@@ -43,8 +43,15 @@ class Saman implements GatewayInterface
 
         $response = $soapClient->VerifyTransaction($request->input('RefNum'), $this->merchantId);
 
-        dd($response);
+        $order = $this->getOrder($request->input('ResNum'));
 
+        dd($order);
+
+    }
+
+    private function getOrder($resNum)
+    {
+        return Order::where('code',$resNum)->firstOrFail();
     }
 
     private function transactionFailed(){
