@@ -35,9 +35,23 @@ class Saman implements GatewayInterface
 
     public function verify(Request $request)
     {
-        if (!$request->has('State') || $request->input('State') !== "OK"){
-            return $this->transactionFailed();
-        }
+//        if (!$request->has('State') || $request->input('State') !== "OK"){
+//            return $this->transactionFailed();
+//        }
+
+        $soapClient = new \SoapClient('https://acquirer.samanepay.com/payments/referencepayment.asmx?WSDL');
+
+        $response = $soapClient->VerifyTransaction($request->input('RefNum'), $this->merchantId);
+
+        $order = $this->getOrder($request->input('ResNum'));
+
+        dd($order);
+
+    }
+
+    private function getOrder($resNum)
+    {
+        return Order::where('code',$resNum)->firstOrFail();
     }
 
     private function transactionFailed(){
