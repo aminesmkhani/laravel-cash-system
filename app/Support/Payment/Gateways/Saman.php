@@ -45,7 +45,9 @@ class Saman implements GatewayInterface
 
         $order = $this->getOrder($request->input('ResNum'));
 
-        dd($order);
+        return $response == ($order->amount + 10000)
+            ? $this->transactionSuccess()
+            : $this->transactionFailed();
 
     }
 
