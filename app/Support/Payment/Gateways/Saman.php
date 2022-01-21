@@ -46,9 +46,19 @@ class Saman implements GatewayInterface
         $order = $this->getOrder($request->input('ResNum'));
 
         return $response == ($order->amount + 10000)
-            ? $this->transactionSuccess()
+            ? $this->transactionSuccess($order, $request->input('RefNum'))
             : $this->transactionFailed();
 
+    }
+
+    private function transactionSuccess($order, $refNum)
+    {
+        return [
+           'status' => self::TRANSACTION_SUCCESS,
+            'order' => $order,
+            'refNum' => $refNum,
+            'gateway' => $this->getName()
+        ];
     }
 
     private function getOrder($resNum)
