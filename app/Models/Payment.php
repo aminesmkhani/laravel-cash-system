@@ -27,4 +27,12 @@ class Payment extends Model
         return $this->method === 'online';
     }
 
+    public function confirm(string $refNum , string $gateway = null)
+    {
+        $this->ref_num = $refNum;
+        $this->gateway = $gateway;
+        $this->status = 1;
+        $this->save();
+    }
+
 }
