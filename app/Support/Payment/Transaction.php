@@ -77,9 +77,11 @@ class Transaction
     {
         $result = $this->gatewayFactory()->verify($this->request);
         if ($result['status'] === GatewayInterface::TRANSACTION_FAILED) return false;
+        $this->confirmPayment($result);
+    }
 
-       dd($result['order']->payment);
-
-
+    public function confirmPayment($result)
+    {
+        return $result['order']->payment->confirm($result['refNum'] , $result['gateway']);
     }
 }
