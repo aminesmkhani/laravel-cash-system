@@ -82,6 +82,11 @@ class Transaction
         return true;
     }
 
+    public function normalizeQuantity($order)
+    {
+        dd($order->products);
+    }
+
     public function confirmPayment($result)
     {
         return $result['order']->payment->confirm($result['refNum'] , $result['gateway']);
