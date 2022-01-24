@@ -30,6 +30,7 @@ class Transaction
         if ($payment->isOnline()){
           return $this->gatewayFactory()->pay($order);
         }
+        $this->normalizeQuantity($order);
         $this->basket->clear();
         return $order;
     }
@@ -78,6 +79,7 @@ class Transaction
         $result = $this->gatewayFactory()->verify($this->request);
         if ($result['status'] === GatewayInterface::TRANSACTION_FAILED) return false;
         $this->confirmPayment($result);
+        $this->normalizeQuantity($result['order']);
         $this->basket->clear();
         return true;
     }
@@ -85,7 +87,7 @@ class Transaction
     public function normalizeQuantity($order)
     {
         foreach ($order->products as $product){
-
+            $product->decrementStock($product->pivot->quantity);
         }
     }
 
