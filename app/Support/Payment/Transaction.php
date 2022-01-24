@@ -84,7 +84,9 @@ class Transaction
 
     public function normalizeQuantity($order)
     {
-        dd($order->products);
+        foreach ($order->products as $product){
+
+        }
     }
 
     public function confirmPayment($result)
