@@ -31,7 +31,9 @@ class Transaction
         try {
             $order = $this->makeOrder();
             $payment = $this->makePayment($order);
+            DB::commit();
         } catch (\Exception $e){
+            DB::rollBack();
             return null;
         }
 
