@@ -9,6 +9,7 @@ use App\Support\Payment\Gateways\GatewayInterface;
 use App\Support\Payment\Gateways\Pasargad;
 use App\Support\Payment\Gateways\Saman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use function GuzzleHttp\Promise\all;
 
@@ -25,8 +26,17 @@ class Transaction
 
     public function checkout()
     {
-        $order = $this->makeOrder();
-        $payment = $this->makePayment($order);
+        DB::beginTransaction();
+
+        try {
+            $order = $this->makeOrder();
+            $payment = $this->makePayment($order);
+            DB::commit();
+        } catch (\Exception $e){
+            DB::rollBack();
+            return null;
+        }
+
         if ($payment->isOnline()){
           return $this->gatewayFactory()->pay($order);
         }
