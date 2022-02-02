@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(CostInterface::class , function ($app){
             $basketCost = new BasketCost($app->make(Basket::class));
+            return $basketCost;
         });
     }
 }
